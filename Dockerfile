@@ -20,6 +20,9 @@ RUN \
   echo "**** install packages ****" && \
   pacman -Sy --noconfirm --needed \
     chromium \
+    mousepad \
+    xfce4 \
+    xfce4-pulseaudio-plugin \
     noto-fonts-cjk \
     git \
     qt6-base \
@@ -47,11 +50,22 @@ RUN \
   mv \
     /usr/bin/chromium \
     /usr/bin/chromium-real && \
+  sed -i \
+    's#^Exec=.*#Exec=/usr/local/bin/wrapped-chromium#g' \
+    /usr/share/applications/chromium.desktop && \
+  mv /usr/bin/exo-open /usr/bin/exo-open-real && \
+  echo "**** xfce tweaks ****" && \
+  rm -f \
+    /etc/xdg/autostart/xfce4-power-manager.desktop \
+    /etc/xdg/autostart/xfce-polkit.desktop \
+    /etc/xdg/autostart/xscreensaver.desktop \
+    /usr/share/xfce4/panel/plugins/power-manager-plugin.desktop && \
   echo "**** cleanup ****" && \
   pacman -Rsn --noconfirm \
     git \
     $(pacman -Qdtq) && \
   rm -rf \
+    /config/.cache \
     /tmp/* \
     /var/cache/pacman/pkg/* \
     /var/lib/pacman/sync/*
