@@ -21,8 +21,31 @@ RUN \
     chromium \
     chromium-l10n \
     libqt5gui5 \
+    zsh \
+    git \
+    vim \
+    fonts-noto-cjk \
+    cmake \
+    gcc \
+    g++ \
+    gfortran \
+    p7zip-full \
+    unrar \
+    zip \
+    libxfce4ui-utils \
+    mousepad \
+    tango-icon-theme \
     thunar \
-    tint2 && \
+    thunar-archive-plugin \
+    xfce4-appfinder \
+    xfce4-panel \
+    xfce4-session \
+    xfce4-settings \
+    xfce4-taskmanager \
+    xfce4-terminal \
+    xfconf \
+    xfdesktop4 \
+    xfwm4  && \
   echo "**** install wps-office ****" && \
   if [ -z ${WPSOFFICE_VERSION+x} ]; then \
     WPSOFFICE_VERSION=$(curl -sL https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=wps-office \
