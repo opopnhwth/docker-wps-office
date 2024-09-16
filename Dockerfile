@@ -21,6 +21,8 @@ RUN \
     chromium \
     chromium-l10n \
     libqt5gui5 \
+    fcitx5 \
+    fcitx55-pinyin \
     zsh \
     git \
     vim \
